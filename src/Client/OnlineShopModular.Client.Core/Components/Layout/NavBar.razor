@@ -1,0 +1,24 @@
+@inherits AppComponentBase;
+
+<section>
+    <BitNavBar TItem="BitNavBarOption" Style="width:100%">
+
+        <BitNavBarOption Text="@Localizer[nameof(AppStrings.Home)]" IconName="@BitIconName.Home" Url="@Urls.HomePage" />
+
+        <AuthorizeView Policy="@AppFeatures.Todo.ManageTodo">
+            <BitNavBarOption Text="@Localizer[nameof(AppStrings.Todo)]" IconName="@BitIconName.ToDoLogoOutline" Url="@Urls.TodoPage" />
+        </AuthorizeView>
+
+        <AuthorizeView Policy="@AppFeatures.AdminPanel.Dashboard">
+            <BitNavBarOption Text="@Localizer[nameof(AppStrings.Dashboard)]" IconName="@BitIconName.BarChartVerticalFill" Url="@Urls.DashboardPage" />
+        </AuthorizeView>
+        <AuthorizeView Policy="@AppFeatures.AdminPanel.ManageProductCatalog">
+            <BitNavBarOption Text="@Localizer[nameof(AppStrings.Categories)]" IconName="@BitIconName.BuildQueue" Url="@Urls.CategoriesPage" />
+            <BitNavBarOption Text="@Localizer[nameof(AppStrings.Products)]" IconName="@BitIconName.Product" Url="@Urls.ProductsPage" />
+        </AuthorizeView>
+
+        <BitNavBarOption Text="@Localizer[nameof(AppStrings.Terms)]" IconName="@BitIconName.EntityExtraction" Url="@Urls.TermsPage" />
+
+
+    </BitNavBar>
+</section>

@@ -1,0 +1,56 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <UserSecretsId>186DC5D5-3FB3-4867-80A0-A821F2EC01B6</UserSecretsId>
+        <ValidateExecutableReferencesMatchSelfContained>false</ValidateExecutableReferencesMatchSelfContained>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Environment)' != 'Development'">
+        <SelfContained>true</SelfContained>
+        <PublishReadyToRun>true</PublishReadyToRun>
+        <PublishReadyToRunComposite>true</PublishReadyToRunComposite>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="NWebsec.AspNetCore.Middleware" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.Web" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" />
+        <PackageReference Include="Sentry.AspNetCore" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\OnlineShopModular.Server.Shared\OnlineShopModular.Server.Shared.csproj" />
+        <ProjectReference Include="..\OnlineShopModular.Server.Api\OnlineShopModular.Server.Api.csproj" />
+        <ProjectReference Include="..\..\Client\OnlineShopModular.Client.Web\OnlineShopModular.Client.Web.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Using Include="OnlineShopModular.Shared.Enums" />
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(Environment)' == 'Development'">
+        <!-- Check out  ScssCompilerService.cs source code. -->
+        <PackageReference Include="Meziantou.Framework.Win32.Jobs" />
+    </ItemGroup>
+    <ItemGroup Condition="'$(Environment)' != 'Development'">
+        <Compile Remove="Services\ScssCompilerService.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="..\OnlineShopModular.Server.Api\appsettings*.json">
+            <Link>%(Filename)%(Extension)</Link>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
+
+    <!--
+    https://learn.microsoft.com/en-us/dotnet/core/docker/publish-as-container
+    https://learn.microsoft.com/en-us/visualstudio/containers/container-msbuild-properties
+    -->
+    <PropertyGroup>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <EnableSdkContainerDebugging Condition="'$(Environment)' == 'Development'">True</EnableSdkContainerDebugging>
+    </PropertyGroup>
+
+</Project>

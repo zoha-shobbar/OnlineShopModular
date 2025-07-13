@@ -1,0 +1,15 @@
+{
+  "solution": {
+    "path": "OnlineShopModular.slnx",
+    "projects": [
+      "src\\Client\\OnlineShopModular.Client.Core\\OnlineShopModular.Client.Core.csproj",
+      "src\\Client\\OnlineShopModular.Client.Web\\OnlineShopModular.Client.Web.csproj",
+	  "src\\Server\\OnlineShopModular.Server.AppHost\\OnlineShopModular.Server.AppHost.csproj",
+      "src\\Server\\OnlineShopModular.Server.Api\\OnlineShopModular.Server.Api.csproj",
+	  "src\\Server\\OnlineShopModular.Server.Shared\\OnlineShopModular.Server.Shared.csproj",
+      "src\\Server\\OnlineShopModular.Server.Web\\OnlineShopModular.Server.Web.csproj",
+      "src\\Shared\\OnlineShopModular.Shared.csproj",
+      "src\\Tests\\OnlineShopModular.Tests.csproj"
+    ]
+  }
+}
