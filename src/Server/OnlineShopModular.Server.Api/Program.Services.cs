@@ -27,6 +27,10 @@ using OnlineShopModular.Server.Shared.Services;
 using OnlineShopModular.Server.Api.Services.Jobs;
 using OnlineShopModular.Server.Api.Models.Identity;
 using OnlineShopModular.Server.Api.Services.Identity;
+using OnlineShopModular.Server.Modules.Library.Application;
+using OnlineShopModular.Server.Modules.Library.Infrastructure;
+using OnlineShopModular.Server.Modules.People.Application;
+using OnlineShopModular.Server.Modules.People.Infrastructure;
 
 namespace OnlineShopModular.Server.Api;
 
@@ -142,6 +146,8 @@ public static partial class Program
                 options.JsonSerializerOptions.TypeInfoResolverChain.AddRange([AppJsonContext.Default, IdentityJsonContext.Default, ServerJsonContext.Default]);
             })
             .AddApplicationPart(typeof(AppControllerBase).Assembly)
+            .AddApplicationPart(typeof(LibraryController).Assembly)
+            .AddApplicationPart(typeof(PeopleController).Assembly)
             .AddOData(options => options.EnableQueryFeatures())
             .AddDataAnnotationsLocalization(options => options.DataAnnotationLocalizerProvider = StringLocalizerProvider.ProvideLocalizer)
             .ConfigureApiBehaviorOptions(options =>
@@ -166,6 +172,17 @@ public static partial class Program
 
         services.AddPooledDbContextFactory<AppDbContext>(AddDbContext);
         services.AddDbContextPool<AppDbContext>(AddDbContext);
+
+        services.AddDbContext<LibraryDbContext>(options =>
+            options.UseSqlServer(configuration.GetConnectionString("LibraryDb")));
+        services.AddDbContext<PeopleDbContext>(options =>
+            options.UseSqlServer(configuration.GetConnectionString("PeopleDb")));
+
+        services.AddScoped<IBookRepository, BookRepository>();
+        services.AddScoped<ILendingBookRepository, LendingBookRepository>();
+        services.AddScoped<IPersonRepository, PersonRepository>();
+        services.AddScoped<LibraryService>();
+        services.AddScoped<PeopleService>();
 
         void AddDbContext(DbContextOptionsBuilder options)
         {

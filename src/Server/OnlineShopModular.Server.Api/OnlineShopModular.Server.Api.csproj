@@ -82,6 +82,8 @@
 
     <ItemGroup>
         <ProjectReference Include="..\OnlineShopModular.Server.Shared\OnlineShopModular.Server.Shared.csproj" />
+        <ProjectReference Include="..\Modules\Library\Api\OnlineShopModular.Server.Modules.Library.Api.csproj" />
+        <ProjectReference Include="..\Modules\People\Api\OnlineShopModular.Server.Modules.People.Api.csproj" />
     </ItemGroup>
 
     <ItemGroup>
