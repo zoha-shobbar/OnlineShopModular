@@ -81,6 +81,11 @@
     </ItemGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\..\Shared\OnlineShopModular.Shared.csproj" />
+        <ProjectReference Include="..\Modules\Library\OnlineShopModular.Server.Modules.Library.Api\OnlineShopModular.Server.Modules.Library.Api.csproj" />
+        <ProjectReference Include="..\Modules\Library\OnlineShopModular.Server.Modules.Library.Infrastructure\OnlineShopModular.Server.Modules.Library.Infrastructure.csproj" />
+        <ProjectReference Include="..\Modules\People\OnlineShopModular.Server.Modules.People.Api\OnlineShopModular.Server.Modules.People.Api.csproj" />
+        <ProjectReference Include="..\Modules\People\OnlineShopModular.Server.Modules.People.Infrastructure\OnlineShopModular.Server.Modules.People.Infrastructure.csproj" />
         <ProjectReference Include="..\OnlineShopModular.Server.Shared\OnlineShopModular.Server.Shared.csproj" />
     </ItemGroup>
 
@@ -104,5 +109,13 @@
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
         <EnableSdkContainerDebugging Condition="'$(Environment)' == 'Development'">True</EnableSdkContainerDebugging>
     </PropertyGroup>
+    <ItemGroup>
+        <None Update="..\Modules\People\appsettings.people.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="..\Modules\Library\appsettings.library.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
 
 </Project>

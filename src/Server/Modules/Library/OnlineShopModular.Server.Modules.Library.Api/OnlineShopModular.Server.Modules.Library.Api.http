@@ -1,0 +1,6 @@
+@OnlineShopModular.Server.Modules.Library.Api_HostAddress = http://localhost:5251
+
+GET {{OnlineShopModular.Server.Modules.Library.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
