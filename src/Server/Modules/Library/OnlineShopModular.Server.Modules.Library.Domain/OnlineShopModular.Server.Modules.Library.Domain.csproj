@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" />
+  </ItemGroup>
+
+  <ItemGroup>
+      <ProjectReference Include="..\..\..\..\Shared\OnlineShopModular.Shared.csproj" />
+      <ProjectReference Include="..\..\..\OnlineShopModular.Server.Shared\OnlineShopModular.Server.Shared.csproj" />
+    <ProjectReference Include="..\..\People\OnlineShopModular.Server.Modules.People.Domain\OnlineShopModular.Server.Modules.People.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

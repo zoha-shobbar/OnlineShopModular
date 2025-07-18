@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>9ba3c66c-026c-4df2-a1fc-21a9ace942ba</UserSecretsId>
+  </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+
+
+    <ItemGroup>
+    <ProjectReference Include="..\..\..\OnlineShopModular.Server.Shared\OnlineShopModular.Server.Shared.csproj" />
+    <ProjectReference Include="..\OnlineShopModular.Server.Modules.People.Infrastructure\OnlineShopModular.Server.Modules.People.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>
